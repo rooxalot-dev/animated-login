@@ -6,7 +6,7 @@ window.onload = function(e) {
 
     var squares = document.querySelector('.floating-squares');
     if (squares) {
-        for (var i = 0; i <= 8; i++) {
+        for (var i = 0; i <= 12; i++) {
             var li = document.createElement('li');
 
             var leftPosition = generateRandom(0, 100);
@@ -22,6 +22,8 @@ window.onload = function(e) {
 
             var duration = generateRandom(3, 8);
             li.style.animationDuration = duration + "s";
+
+            li.style.animationDirection = (i % 2 === 0) ? "alternate" : "alternate-reverse";
 
             squares.appendChild(li);
         }

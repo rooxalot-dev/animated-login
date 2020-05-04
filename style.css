@@ -21,7 +21,7 @@ button {
 body {
     background: #6007b0;
     color: #fff;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 /* End global styles */
 
@@ -38,21 +38,12 @@ body {
     }
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(720deg);
-    }
-}
-
-@keyframes erupting {
+@keyframes rotating-eruption {
     0% {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-1200px);
+        transform: translateY(-1200px) rotate(360deg);
     }
 }
 /* End Animations keyframes */
@@ -140,7 +131,7 @@ body {
     background-color: rgba(255, 255, 255, .5);
     z-index: -1;
 
-    animation: erupting 2s infinite linear;
+    animation: rotating-eruption 2s infinite linear;
     animation-direction: alternate;
     animation-delay: 2s;
     
