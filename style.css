@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap');
 
+
 /* Start reset */
 * {
     margin: 0;
@@ -38,6 +39,24 @@ body {
     }
 }
 
+@keyframes shake {
+    0% {
+        transform: translateX(0%);
+    }
+    25% {
+        transform: translateX(10%);
+    }
+    50% {
+        transform: translateX(-10%);
+    }
+    75% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 @keyframes rotating-eruption {
     0% {
         transform: translateY(0);
@@ -64,7 +83,7 @@ body {
     border-radius: 5px;
     background-color: #fff;
 
-    animation: fade-in-from-upper-left;
+    animation: fade-in-from-upper-left forwards;
     animation-duration: 0.5s;
 }
 
@@ -76,6 +95,11 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+/* TODO: Ajustar animação para que após o container realizar o "shake", não faça novamente o fade-in */
+/* .login-container.has-error {
+    animation: shake .5s linear;
+} */
 
 .login-container form img {
     width: 160px;

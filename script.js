@@ -1,8 +1,25 @@
 window.onload = function(e) {
-    function generateRandom(min, max) {
-        var randomValue = Math.random() * (max - min) + min;
-        return randomValue;
-    }
+    var loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        try {
+            var data = new FormData(e.target);
+            for (let [name, value] of data) {
+                if (!!value) {
+                    throw new Error('Preencha todos os campos!');
+                }
+            }
+        } catch (error) {
+            console.log('Erro no formulário: ', error);
+            var currentTarget = e.currentTarget;
+            
+            currentTarget.parentElement.classList.add('has-error');
+            setTimeout(function() {
+                currentTarget.parentElement.classList.remove('has-error');
+            }, 1000);
+        }
+    });
 
     var squares = document.querySelector('.floating-squares');
     if (squares) {
@@ -15,7 +32,7 @@ window.onload = function(e) {
             var size = generateRandom(40, 200);
             li.style.width = size + "px";
             li.style.height = size + "px";
-            li.style.bottom = - size + "px";
+            li.style.bottom = - (size + 50) + "px";
 
             var delay = generateRandom(1, 5);
             li.style.animationDelay = delay + "s";
@@ -28,4 +45,9 @@ window.onload = function(e) {
             squares.appendChild(li);
         }
     }
+}
+
+function generateRandom(min, max) {
+    var randomValue = Math.random() * (max - min) + min;
+    return randomValue;
 }
