@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap');
 
+/* Start reset */
 * {
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
 }
+/* Start reset */
 
+/* Start global styles */
 body, input, button {    
     font-family: Roboto, sans-serif
 }
@@ -16,10 +19,45 @@ button {
 }
 
 body {
-    background: #7159c1;
+    background: #6007b0;
     color: #fff;
+    overflow-y: hidden;
+}
+/* End global styles */
+
+/* Start Animations keyframes */
+@keyframes fade-in-from-upper-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%) translateY(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        transform: translateY(0);
+    }
 }
 
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes erupting {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-1200px);
+    }
+}
+/* End Animations keyframes */
+
+/* Start form-conainter and form styles  */
 .login-container {
     position: absolute;
 	top:0;
@@ -34,6 +72,9 @@ body {
     max-width: 320px;
     border-radius: 5px;
     background-color: #fff;
+
+    animation: fade-in-from-upper-left;
+    animation-duration: 0.5s;
 }
 
 .login-container form {
@@ -46,7 +87,7 @@ body {
 }
 
 .login-container form img {
-    max-width: 160px;
+    width: 160px;
 }
 
 .login-container form input {
@@ -54,10 +95,12 @@ body {
     width: 100%;
     height: 30px;
     padding: 10px;
-    border: solid 1px #7159c1;
+    border: solid 1px #6007b0;
     border-radius: 5px;
+    font-size: 16px;
+    letter-spacing: 0.5;
     margin-bottom: 15px;
-    color: #7159c1;
+    color: #6007b0;
 }
 
 .login-container form button {
@@ -67,16 +110,39 @@ body {
     margin-top: 20px;
     border: 0;
     border-radius: 5px;
-    background-color: #7159c1;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5;
+    background-color: #6007b0;
     color:#fff;
 
     transition: background-color .2s ease-in-out;
 }
 
 .login-container form button:hover {
-    background-color: #6007b0;
+    background-color: #500590;
 }
 
 .login-container form input::placeholder {
-    color: #7159c1;
+    color: #6007b0;
 }
+/* End form-conainter and form styles  */
+
+/* Start floating squares */
+.floating-squares li {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    list-style: none;
+    background-color: rgba(255, 255, 255, .5);
+    z-index: -1;
+
+    animation: erupting 2s infinite linear;
+    animation-direction: alternate;
+    animation-delay: 2s;
+    
+}
+/* End floating squares */
